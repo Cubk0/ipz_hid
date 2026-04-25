@@ -231,8 +231,12 @@ class HIDDevice():
     def _parse_main(self,item:HIDItem):
         match item.item_tag:
             case HIDMainTag.COLLECTION:
-                usage = self.local_usage_list[0] if len(self.local_usage_list)>0 else ValueError("Collection must have a usage")
-                # TODO multiple usages for collection warning
+                if len(self.local_usage_list) == 0:
+                    raise ValueError("No usage defined for collection")
+                usage = self.local_usage_list[0]
+                
+                if(len(self.local_usage_list)>1):
+                    print("Warning: Multiple usages defined for collection, using first usage in list\n")
                 self._start_collection(usage,HIDCollectionType(item.item_data[0]))
             case HIDMainTag.END_COLLECTION:
                 self._end_collection()
