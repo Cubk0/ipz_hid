@@ -321,7 +321,22 @@ class HIDDevice():
     def set_descriptor(self,descriptor:HIDDescriptor):
         self.descriptor = descriptor
         if len(self.collections) !=0:
-            self.__init__() # reset device state if descriptor is being set again
+            self.collections = []
+            self.collection_index_stack = []
+            self.fields:list[HIDField] = []
+            self.input_report_parsers = {}
+            self.output_report_parsers = {}
+            self.feature_report_parsers = {} # TODO maybe not needed?
+            self.global_state_stack = [] 
+            self.global_state = GlobalState();
+            self.local_usage_min = -1
+            self.local_usage_min_usage_page = -1
+            self.local_usage_max = -1
+            self.local_usage_max_usage_page = -1
+            self.local_usage_list = []
+            self.using_report_ids = False
+            self.top_level_collection_count = 0
+            self.descriptor=None
         for item in descriptor.items:
             match item.item_type:
                 case HIDItemType.MAIN:

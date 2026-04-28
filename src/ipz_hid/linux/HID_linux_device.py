@@ -31,9 +31,6 @@ class HIDLinuxDevice(HIDDevice):
             supported_rel=self.mapper.get_supported_rel(self.fields)[0],
             abs_axis_info=self.mapper.get_abs_axis_info(self.fields)[0]
         )
-        print(f"Supported keys: {self.event_generator.supported_keys}")
-        print(f"Supported rel axes: {self.event_generator.supported_rel}")
-        print(f"Supported abs axes: {list(self.event_generator.abs_info.keys())}")
         if self.options != None and self.options.make_virtual_device:
             if self.virtual_device is not None:
                 self.virtual_device.device.close()
