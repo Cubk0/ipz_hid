@@ -1,5 +1,10 @@
 import pytest
-from ipz_hid.core.HID_classes import *
+from ipz_hid.core.descriptor import HIDDescriptor
+from ipz_hid.core.device import HIDDevice
+from ipz_hid.core.field import HIDField
+from ipz_hid.core.hid_types import HIDInput, HIDInputField, HIDUsage
+from ipz_hid.core.hid_items import *
+from ipz_hid.core.hid_usages import *
 from ipz_hid.linux.mapper import HIDLinuxMapper
 from evdev import ecodes
 

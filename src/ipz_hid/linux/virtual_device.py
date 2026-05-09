@@ -1,4 +1,4 @@
-from ipz_hid.core.HID_classes import HIDInputField
+from ipz_hid.core.hid_types import HIDInputField
 from ipz_hid.linux.input_state import *
 from ipz_hid.linux.mapper import HIDLinuxMapper
 from typing import Dict, Sequence

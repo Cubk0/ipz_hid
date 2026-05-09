@@ -1,10 +1,12 @@
-from ipz_hid.core.HID_classes import *
+from dataclasses import dataclass
+from ipz_hid.core.descriptor import HIDDescriptor
+from ipz_hid.core.device import HIDDevice
 from ipz_hid.linux.mapper import *
 from ipz_hid.linux.input_state import *
 from typing import Dict, List,Optional
 
 from ipz_hid.linux.virtual_device import UInputDevice
-from ipz_hid.raw.HID_raw import HIDRaw
+from ipz_hid.raw.hid_raw import HIDRaw
 
 
 @dataclass

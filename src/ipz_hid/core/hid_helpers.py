@@ -1,5 +1,4 @@
-from ipz_hid.core.HID_classes import *
-from ipz_hid.core.HID_usages import *
+from ipz_hid.core.hid_usages import *
 
 def get_int_from_bytes(data: bytes, bit_offset: int, bit_size: int) -> int:
     full_int = int.from_bytes(data, 'little')

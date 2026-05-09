@@ -1,8 +1,9 @@
 from ipz_hid.linux.input_state import *
 from typing import Dict, List, Optional
-from ipz_hid.core.HID_usages import *
-from ipz_hid.core.HID_classes import *
-from ipz_hid.core.HID_helpers import *
+from ipz_hid.core.hid_usages import *
+from ipz_hid.core.field import HIDField
+from ipz_hid.core.hid_types import HIDInputField, HIDUsage
+from ipz_hid.core.hid_helpers import *
 from evdev import ecodes
 
 
