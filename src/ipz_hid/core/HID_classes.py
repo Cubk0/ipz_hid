@@ -117,7 +117,11 @@ class HIDField():
         input_field = HIDInputField(field= self)
         for i in range(self.report_count):
             value = get_int_from_bytes(report, self.report_size * i+self.bit_offset, self.report_size)
-            usage = self.usage_table[value] if value < len(self.usage_table) else self.usage_table[-1]
+            if(self.logical_min<0 and value >2**(self.report_size-1)-1):
+                value = value- 2**self.report_size
+            usage_index = value - self.logical_min
+
+            usage = self.usage_table[usage_index] if 0 <= usage_index < len(self.usage_table) else self.usage_table[-1]
             if(usage.page >=0xFF00):
                 continue
             input_field.input_array.append(HIDInput(usage,1))
